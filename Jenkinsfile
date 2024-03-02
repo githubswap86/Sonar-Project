@@ -8,14 +8,14 @@
        stage('Checkout'){
             steps{
                 git 'git@github.com:githubswap86/Sonar-Project.git'
-            }
-         }    
+            }   
        post {
                 success {
                     junit 'target/surefire-reports/**/*.xml' 
            }
 		  }
-       stage('Package'){
+       }
+	    stage('Package'){
             steps{
                 sh 'mvn clean package'
             }
