@@ -9,7 +9,7 @@
                 git 'git@github.com:githubswap86/Sonar-Project.git'
 	    }
 	  }      
-	    stage('Build'){
+	    stage('package'){
             steps{
                 sh 'mvn clean package'
             }  
