@@ -47,8 +47,7 @@ pipeline{
         stage ('Deploy to Prod'){
      steps {
         sh 'scp -o StrictHostKeyChecking=no webapp/target/webapp.war root@3.81.38.44:/opt/apache-tomcat-8.0.52/webapps'
-
-           }
-   }
+          }
+      }
 }
 }
