@@ -16,10 +16,9 @@
             } 
 		     post {
                 success {
-                    junit 'target/surefire-reports/**/*.xml' 
+                    junit '**/target/surefire-reports/package-*.xml' 
 		        }
          }
-
 	    }
 	    stage('SonarQube analysis') {
 //    def scannerHome = tool 'SonarScanner 4.0';
