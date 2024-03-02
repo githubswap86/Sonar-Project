@@ -13,15 +13,14 @@
             steps{
                 sh 'mvn clean package'
             }       
-        
-	    post {
-                success {
-                    junit '**/target/surefire-reports/Package-*.xml' 
-		        }
-          }
+		    post {
+		    success{
+	    //       junit '**/target/surefire-reports/Package-*.xml'  
+		    }
 	    }
-    }
- stage('SonarQube analysis') {
+
+	    }
+    	    stage('SonarQube analysis') {
 //    def scannerHome = tool 'SonarScanner 4.0';
         steps{
         withSonarQubeEnv('SonarQube') { 
