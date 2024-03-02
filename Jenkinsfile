@@ -19,7 +19,8 @@
                 archiveArtifacts artifacts: '*/.war', followSymlinks: false
         }
             }
-    	    stage('SonarQube analysis') {
+	    }
+	    stage('SonarQube analysis') {
 //    def scannerHome = tool 'SonarScanner 4.0';
         steps{
         withSonarQubeEnv('SonarQube') { 
@@ -53,7 +54,6 @@
         sh 'scp -o StrictHostKeyChecking=no webapp/target/webapp.war root@3.81.38.44:/opt/apache-tomcat-8.0.52/webapps'
           }
       }
-		}
 
     }
 			    post {
