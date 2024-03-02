@@ -14,7 +14,7 @@
                 sh 'mvn clean package'
             }       
 		    post {
-		    success{
+		       success {
 	    //       junit '**/target/surefire-reports/Package-*.xml'  
 		    }
 	    }
