@@ -14,11 +14,17 @@
                 sh 'mvn clean package'
             }  
 	    
-	    post {
-		       success {
-	          junit 'target/surefire-reports/**/*.xml'  
-		    }
-	    }
+	  //  post {
+	//	       success {
+	  //        junit 'target/surefire-reports/**/*.xml'  
+	//	    }
+	  //  }
+          stage('Archiving and Test Results') {
+            steps{
+                junit '*/surefire-reports/.xml'
+                archiveArtifacts artifacts: '*/.war', followSymlinks: false
+        }
+            }
 	    }
 	    
     	    stage('SonarQube analysis') {
