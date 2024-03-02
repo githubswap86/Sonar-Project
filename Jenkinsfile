@@ -13,12 +13,17 @@
             steps{
                 sh 'mvn clean package'
             }  
-          stage('Archiving and Test Results') {
-            steps{
-                junit '*/surefire-reports/.xml'
-                archiveArtifacts artifacts: '*/.war', followSymlinks: false
+		    post {
+        success {
+            junit 'target/surefire-reports/*.xml'
         }
-            }
+    }
+        //  stage('Archiving and Test Results') {
+          //  steps{
+            //    junit '*/surefire-reports/.xml'
+              //  archiveArtifacts artifacts: '*/.war', followSymlinks: false
+       // }
+         //   }
 	    }
 	    stage('SonarQube analysis') {
 //    def scannerHome = tool 'SonarScanner 4.0';
