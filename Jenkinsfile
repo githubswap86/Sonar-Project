@@ -13,13 +13,13 @@
             steps{
                 sh 'mvn clean package'
             }  
-	    }
-		    post {
+	    
+	    post {
 		       success {
 	          junit 'target/surefire-reports/**/*.xml'  
 		    }
 	    }
-
+	    }
 	    
     	    stage('SonarQube analysis') {
 //    def scannerHome = tool 'SonarScanner 4.0';
