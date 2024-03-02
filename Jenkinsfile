@@ -2,7 +2,6 @@
 			    agent any
     environment {
         PATH ="$PATH:/opt/apache-maven-3.9.6/bin"
-
     }
     stages{
        stage('Checkout'){
@@ -56,24 +55,6 @@
         sh 'scp -o StrictHostKeyChecking=no webapp/target/webapp.war root@3.81.38.44:/opt/apache-tomcat-8.0.52/webapps'
           }
       }
-			    post {
-            always {
-                emailext (
-                    subject: "Pipeline Status: ${BUILD_NUMBER}",
-                    body: '''<html>
-                                <body>
-                                    <p>Build Status: ${BUILD_STATUS}</p>
-                                    <p>Build Number: ${BUILD_NUMBER}</p>
-                                    <p>Check the <a href="${BUILD_URL}">console output</a>.</p>
-                                </body>
-                            </html>''',
-                    to: 'jaiswaladi246@gmail.com',
-                    from: 'jenkins@example.com',
-                    replyTo: 'jenkins@example.com',
-                    mimeType: 'text/html'
-                )
-            }
-        }
 		post {
             always {
                 emailext (
