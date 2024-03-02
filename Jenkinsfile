@@ -16,7 +16,7 @@
             } 
 		     post {
                 success {
-                    junit '**/target/surefire-reports/package-*.xml' 
+                    junit ' **/target/surefire-reports-*.xml ' 
 		        }
          }
 	    }
