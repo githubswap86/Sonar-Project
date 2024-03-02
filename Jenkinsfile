@@ -8,19 +8,19 @@
        stage('Checkout'){
             steps{
                 git 'git@github.com:githubswap86/Sonar-Project.git'
-            }   
-       post {
-                success {
-                    junit 'target/surefire-reports/**/*.xml' 
-           }
-		  }
-       }
+	    }
+	  }      
 	    stage('Package'){
             steps{
                 sh 'mvn clean package'
             }
          }
-        stage('SonarQube analysis') {
+	      post {
+                success {
+                    junit 'target/surefire-reports/**/*.xml' 
+           }
+		  }
+	    stage('SonarQube analysis') {
 //    def scannerHome = tool 'SonarScanner 4.0';
         steps{
         withSonarQubeEnv('SonarQube') { 
