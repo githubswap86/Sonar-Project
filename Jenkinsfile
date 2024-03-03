@@ -61,21 +61,15 @@
       }
 
     }
-
-	
-Kavitha Reddy <kavithareddy1012@gmail.com>
-Fri, 1 Mar, 16:10 (1 day ago)
-to me
-
 post {
         success {
             emailext (
                 subject: "Pipeline Success: ${env.JOB_NAME}",
                 body: "The pipeline ${env.JOB_NAME} has successfully completed.",
                 recipientProviders: [[$class: 'DevelopersRecipientProvider']],
-                to: "rishikumar11210@gmail.com",
-                replyTo: "rishikumar11210@gmail.com",
-                from: "rishikumar11210@gmail.com",
+                to: "manchala.ksvc@gmail.com",
+                replyTo: "manchala.ksvc@gmail.com",
+                from: "manchala.ksvc@gmail.com",
                 attachLog: true,
                 compressLog: true
             )
@@ -85,9 +79,9 @@ post {
                 subject: "Pipeline Failure: ${env.JOB_NAME}",
                 body: "The pipeline ${env.JOB_NAME} has failed. Please check the Jenkins console output for more details.",
                 recipientProviders: [[$class: 'DevelopersRecipientProvider']],
-                to: "rishikumar11210@gmail.com",
-                replyTo: "rishikumar11210@gmail.com",
-                from: "rishikumar11210@gmail.com",
+                to: "manchala.ksvc@gmail.com",
+                replyTo: "manchala.ksvc@gmail.com",
+                from: "manchala.ksvc@gmail.com",
                 attachLog: true,
                 compressLog: true
             )
