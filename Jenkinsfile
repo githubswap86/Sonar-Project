@@ -61,22 +61,37 @@
       }
 
     }
-			    post {
-            always {
-                emailext (
-                    subject: "Pipeline Status: ${BUILD_NUMBER}",
-                    body: '''<html>
-                                <body>
-                                    <p>Build Status: ${BUILD_STATUS}</p>
-                                    <p>Build Number: ${BUILD_NUMBER}</p>
-                                    <p>Check the <a href="${BUILD_URL}">console output</a>.</p>
-                                </body>
-                            </html>''',
-                    to: 'manchala.ksvc@ggmail.com',
-                    from: 'jenkins@example.com',
-                    replyTo: 'jenkins@example.com',
-                    mimeType: 'text/html'
-                )
-            }
-        }	
+
+	
+Kavitha Reddy <kavithareddy1012@gmail.com>
+Fri, 1 Mar, 16:10 (1 day ago)
+to me
+
+post {
+        success {
+            emailext (
+                subject: "Pipeline Success: ${env.JOB_NAME}",
+                body: "The pipeline ${env.JOB_NAME} has successfully completed.",
+                recipientProviders: [[$class: 'DevelopersRecipientProvider']],
+                to: "rishikumar11210@gmail.com",
+                replyTo: "rishikumar11210@gmail.com",
+                from: "rishikumar11210@gmail.com",
+                attachLog: true,
+                compressLog: true
+            )
+        }
+        failure {
+            emailext (
+                subject: "Pipeline Failure: ${env.JOB_NAME}",
+                body: "The pipeline ${env.JOB_NAME} has failed. Please check the Jenkins console output for more details.",
+                recipientProviders: [[$class: 'DevelopersRecipientProvider']],
+                to: "rishikumar11210@gmail.com",
+                replyTo: "rishikumar11210@gmail.com",
+                from: "rishikumar11210@gmail.com",
+                attachLog: true,
+                compressLog: true
+            )
+        }
+    }
+		
 		    }
