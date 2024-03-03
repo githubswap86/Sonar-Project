@@ -1,5 +1,5 @@
-                    pipeline{  
-			    agent any
+pipeline{  
+agent any
     environment {
         PATH ="$PATH:/opt/apache-maven-3.9.6/bin"
     }
@@ -13,11 +13,6 @@
             steps{
                 sh 'mvn clean package'
             }  
-	//	    post {
-        //success {
-          //  junit 'target/surefire-reports/*.xml'
-       // }
-   // }
           }
 	    stage('SonarQube analysis') {
 //    def scannerHome = tool 'SonarScanner 4.0';
@@ -53,7 +48,6 @@
         sh 'scp -o StrictHostKeyChecking=no webapp/target/webapp.war root@3.81.38.44:/opt/apache-tomcat-8.0.52/webapps'
           }
       }
-
     }
 post {
         success {
